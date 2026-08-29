@@ -1,0 +1,32 @@
+# ---- environment -------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---- datasets (21 GB) --------------------------------------------------
+# fp16 depth buffers plus teacher label sets. Fully regenerable and seeded, so
+# regenerating gives byte-identical files:
+#   python -m train.collect --seeds 2400 --out data/round1.pt   (~30 s)
+#   python -m train.dagger  --rounds 4                          (~8 min)
+data/
+
+# ---- model checkpoints (180 MB) ----------------------------------------
+# ~4.7 MB each, 36 of them. Regenerate with:  python -m train.sweep  (~55 min)
+runs/**/model.pt
+
+# NOT ignored, deliberately: runs/**/log.csv (160 KB total). The per-step win
+# rate and diversity traces are the evidence for the diagnostics claims in
+# plan_week3.md -- including the dead-head demonstration -- and cannot be read
+# off any other artefact.
+
+# ---- kept, deliberately ------------------------------------------------
+# results/  (5.3 MB): sweep.csv is required by tests/test_readme.py, the plots
+# are README deliverables, and disagreement.mp4 is deliverable §10.
+
+# ---- scratch -----------------------------------------------------------
+/tmp/
+*.tmp
+.DS_Store
