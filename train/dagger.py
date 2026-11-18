@@ -1,13 +1,13 @@
 """python -m train.dagger --rounds 4
 
 Round 1 the teacher flies; rounds 2+ the STUDENT flies while the teacher labels
-every state it wanders into (proposal §4.4). The dataset accumulates and is
+every state it wanders into. The dataset accumulates and is
 never replaced. Retraining is from scratch each round -- classical DAgger, and
 at ~100 s a run there is no reason to cut the corner.
 
 beta = 0 from round 2: the student flies alone. No perturbation is injected
 during collection; that would make the week-4 recovery test much easier to pass
-and is not what §4.4 describes.
+and is not classical DAgger.
 """
 import argparse
 import os

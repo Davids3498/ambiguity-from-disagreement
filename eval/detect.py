@@ -1,4 +1,4 @@
-"""Head disagreement as an ambiguity DETECTOR (proposal §2).
+"""Head disagreement as an ambiguity DETECTOR.
 
 Predict `is_multimodal(state)` from disagreement alone, scored as a detection
 problem with ROC AUC -- not as a qualitative plot. Ground truth is the teacher's

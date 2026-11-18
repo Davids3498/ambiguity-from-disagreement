@@ -31,7 +31,7 @@ discussed under [Limitations](#limitations).
 1. Head disagreement evaluated as an ambiguity *detector*, with ground truth derived from the teacher, scored by AUC with bootstrap confidence intervals.
 2. Ablation of the loss variant itself — WTA vs. relaxed WTA — which the source paper does not perform.
 3. K sweep against detection performance rather than against success rate alone.
-4. Diversity resolved by obstacle type, with a null baseline (see §6).
+4. Diversity resolved by obstacle type, with a null baseline (see [below](#diversity-by-obstacle-type-against-the-null-baseline)).
 
 Claiming the multi-hypothesis architecture as a contribution would be caught by any reader who knows the paper. The contribution is the measurement layer.
 
@@ -136,9 +136,9 @@ one representative frame per stratum reads:
 Two results here are negative, and both are reported because they were measured
 rather than assumed.
 
-### The proposal's demo claim is false
+### The original demo claim is false
 
-Proposal §2 promises: *"the agent slows at a bar, stays fast through a window."*
+The original project plan promised: *"the agent slows at a bar, stays fast through a window."*
 Measured over 800 held-out seeds, mean speed inside the decision band:
 
 | bar | pole | window | wide_gap |
@@ -196,7 +196,8 @@ state the teacher passed through rather than along one committed trajectory.
   any obstacle where the answer is trivially "unimodal"; that number largely
   measures whether the drone is near something. Detection is reported inside a
   1.5 m band derived from the planner horizon.
-- **The custom simulator** is a deliberate choice (proposal §4.1), not a hidden
+- **The custom simulator** is a deliberate choice (fast, batched, and with a
+  teacher that can read the map), not a hidden
   limitation. No number here is compared to the source paper's.
 - **One task, four obstacle types, one corridor geometry.** "K=2" means K=2 *for
   a world whose modes come in pairs*.
@@ -206,6 +207,7 @@ state the teacher passed through rather than along one committed trajectory.
 ## Reproduce
 
 ```bash
+# Python >= 3.11 (numpy 2.5 requires it); tested on 3.12
 python -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt
 

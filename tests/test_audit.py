@@ -21,7 +21,7 @@ def test_gate_ambiguous_strata_are_multimodal_in_band():
 
 
 def test_gate_control_strata_are_not():
-    """The half proposal §7 does not state. A teacher returning two modes
+    """The half the original gate does not state. A teacher returning two modes
     everywhere would pass the multimodality test and be worthless."""
     rows = _rows()
     for s in ("window", "wide_gap"):

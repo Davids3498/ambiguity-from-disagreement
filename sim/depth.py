@@ -47,7 +47,7 @@ def trace(scene: Scene, origin: Tensor, dirs_w: Tensor, z_max: float,
 
     The naive (N,R,P) tensor is ~500 MB per fp32 temporary at N=1024; chunking
     holds peak at O(N*R*chunk) with no measurable slowdown, because the whole
-    kernel is memory-bound. See plan_week1.md §4.1.
+    kernel is memory-bound.
     """
     n, r, _ = dirs_w.shape
     best = dirs_w.new_full((n, r), z_max)

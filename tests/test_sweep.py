@@ -61,7 +61,7 @@ def test_null_condition_differs_from_the_headline_in_data_only():
     assert k3[3] == "dagger" and null[3] == "null"   # only the data differs
 
 
-def test_the_sweep_covers_the_proposal_k_values():
+def test_the_sweep_covers_the_planned_k_values():
     ks = {c[1] for c in conditions(seeds=(0,))}
     assert ks == {1, 2, 3, 4, 6}
     assert len(conditions(seeds=(0, 1, 2))) == 30

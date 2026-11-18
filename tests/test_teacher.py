@@ -186,7 +186,7 @@ def test_desired_velocity_points_at_the_first_waypoint():
 
 def test_teacher_flies_the_corridor():
     """A cost function whose argmin cannot complete a corridor is not one worth
-    imitating (plan2 §6)."""
+    imitating."""
     from eval.policies import teacher
     from sim.env import SUCCESS
     from sim.generate import STRATA

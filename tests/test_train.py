@@ -31,7 +31,7 @@ def test_different_seeds_give_different_models(tmp_path):
 
 
 def test_diagnostics_exist_at_step_one(tmp_path):
-    """Proposal §6: logged from step one, not from step 100."""
+    """Logged from step one, not from step 100."""
     import csv
     out = str(tmp_path / "r")
     _run(0, out)
@@ -43,7 +43,7 @@ def test_diagnostics_exist_at_step_one(tmp_path):
 
 
 def test_a_parked_head_stays_dead_under_wta_and_revives_under_rwta(tmp_path):
-    """The instrument must register the fault it exists to catch (plan3 §8).
+    """The instrument must register the fault it exists to catch.
 
     A head parked outside the label distribution can never be nearest, so under
     WTA it never receives a gradient. Note that diversity RISES in this case --

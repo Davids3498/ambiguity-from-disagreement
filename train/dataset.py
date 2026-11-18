@@ -1,6 +1,6 @@
 """Round-1 dataset: every state the teacher visits, with its label set.
 
-The dataset ACCUMULATES and is never replaced (proposal §4.4) -- week 4 appends
+The dataset ACCUMULATES and is never replaced -- week 4 appends
 DAgger rounds to it, so this on-disk format is fixed now.
 
 `n_modes` is stored because week 5 scores against it. It is never sampled on:
@@ -98,7 +98,7 @@ def _pack(obs, lab, env, idx, cfg: Config, round_id: int) -> Rollouts:
 def collect(cfg: Config, device, seeds, batch: int = 512, every: int = 1,
             progress: bool = False, policy_fn=None, round_id: int = 1) -> Rollouts:
     """Round 1: the teacher flies. Rounds 2+: the STUDENT flies and the teacher
-    labels every state it wanders into (proposal §4.4).
+    labels every state it wanders into.
 
     The labelling is the teacher's either way -- only the flying changes.
     """

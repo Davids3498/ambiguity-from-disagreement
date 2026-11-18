@@ -1,4 +1,4 @@
-"""Proposal §2 promises: 'the agent slows at a bar, stays fast through a window.'
+"""The original plan promised: 'the agent slows at a bar, stays fast through a window.'
 
 That is an empirical claim and it has never been measured. A video can be made
 to look like it is true, and a video is exactly what a reader cannot check --

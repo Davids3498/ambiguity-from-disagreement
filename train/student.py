@@ -42,7 +42,7 @@ class Student(nn.Module):
         Without the offset every head is identical, WTA hands every label to
         head 0 (argmin ties break by index), and heads 1..K-1 never receive a
         gradient -- a dead run from step one, caused by initialisation and not
-        by the loss. plan3 §8 builds the forced-collapse demonstration by
+        by the loss. The forced-collapse demonstration is built by
         setting head_init_spread to zero.
         """
         cfg = self.cfg
@@ -50,8 +50,8 @@ class Student(nn.Module):
         if cfg.head_init_spread == 0.0:
             # The degenerate case, on purpose: zero weights as well as equal
             # biases makes every head EXACTLY identical, so WTA hands all labels
-            # to head 0 and heads 1..K-1 never receive a gradient. plan3 §8 uses
-            # this to show the win-rate diagnostic registers the fault it exists
+            # to head 0 and heads 1..K-1 never receive a gradient. This is used
+            # to show the win-rate diagnostic registers the fault it exists
             # to catch. Never a default -- reachable only via --head-spread 0.
             nn.init.zeros_(self.out.weight)
         prior = torch.zeros(self.k, 10)

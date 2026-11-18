@@ -1,7 +1,7 @@
 """Winner-takes-all and relaxed WTA assignment.
 
 Each teacher label in the set is assigned to its nearest head; only that head
-receives gradient (proposal §4.3). A head may win several labels; a label is won
+receives gradient. A head may win several labels; a label is won
 by exactly one head.
 
 RWTA gives the winner 1-relax and splits relax among the losers, which keeps

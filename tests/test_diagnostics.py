@@ -44,7 +44,7 @@ def test_diversity_matches_the_cluster_metric_in_metres():
 
 def test_diversity_is_high_for_a_dead_head_which_is_why_win_rate_is_needed():
     """A head parked 8 m away makes diversity look excellent while it is in fact
-    garbage. Proposal §6: neither diagnostic is sufficient alone."""
+    garbage. Neither diagnostic is sufficient alone."""
     h = _heads([0.0, 0.1, 8.0])
     assert float(diag.diversity(h)) > 4.0
 

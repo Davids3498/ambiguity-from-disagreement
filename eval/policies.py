@@ -50,7 +50,7 @@ def reactive_depth(cfg: Config, gain: float = 1.4, blur: int = 5,
 
 
 def teacher(cfg: Config):
-    """DAgger round 1 (proposal §4.4). PRIVILEGED: reads the map and the exact
+    """DAgger round 1. PRIVILEGED: reads the map and the exact
     state. Flies the lowest-cost mode, replanned every step.
 
     That it flies at all is the load-bearing check on the cost function -- an

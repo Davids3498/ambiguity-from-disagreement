@@ -1,7 +1,7 @@
 """The week-2 gate: does the teacher's cluster count separate the ambiguous
 strata from the controls?
 
-Proposal §7 asks only that a substantial fraction of ambiguous states be
+The original plan asks only that a substantial fraction of ambiguous states be
 multimodal. That is necessary and not sufficient -- a teacher returning two
 modes everywhere would pass it and be worthless, because the week-5 ROC would be
 a diagonal. So this audit reports BOTH sides and the gate is the separation.

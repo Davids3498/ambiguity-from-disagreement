@@ -83,7 +83,7 @@ def test_no_distractor_inside_the_focal_band():
 
 
 def test_focal_obstacles_subtend_enough_pixels():
-    """plan_week1.md §4.3: a 0.4 m bar at 6 m is 2.5 px and the ambiguity may
+    """At 1.54 deg/px, a 0.4 m bar at 6 m is 2.5 px and the ambiguity may
     simply not be in the image. This is the check that keeps it honest."""
     v_deg_px = vfov_deg(CFG) / CFG.cam_h
     h_deg_px = CFG.hfov_deg / CFG.cam_w
@@ -110,7 +110,7 @@ def _cross_section(s, ny=61, nz=41):
 
 
 def test_focal_cross_section_has_the_intended_mode_structure():
-    """The early read on the week-2 gate (plan §13). This is geometry, not the
+    """The early read on the week-2 gate. This is geometry, not the
     teacher: it confirms there is physically room over AND under a bar, left AND
     right of a pole, and only one way through a window or a wide gap. It does
     NOT show the teacher will score both options as good -- that stays week 2's
@@ -151,7 +151,7 @@ def test_focal_cross_section_has_the_intended_mode_structure():
 def test_focal_obstacle_intercepts_the_approach_line():
     """A bar the drone flies over without deciding is not ambiguous. The bar and
     pole strata must actually intercept the straight shot from start to goal --
-    otherwise the 'canonical ambiguity' rows of proposal §5 are mislabelled."""
+    otherwise the 'canonical ambiguity' strata are mislabelled."""
     s = generate(CFG, split_seeds("eval", 400), DEV)
     t = torch.linspace(0.0, 1.0, 200, device=DEV)[None, :, None]
     line = s.start[:, None, :] + t * (s.goal - s.start)[:, None, :]

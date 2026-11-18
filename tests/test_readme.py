@@ -93,7 +93,7 @@ def test_null_baseline_appears_beside_every_bar_claim():
 
 
 def test_the_withdrawn_demo_claim_is_recorded_as_withdrawn():
-    """Proposal §2 claims the agent slows at a bar. It does not."""
+    """The original plan claimed the agent slows at a bar. It does not."""
     t = _text()
     assert "withdrawn" in t.lower()
     assert "4.526" in t and "+0.002 m/s" in t

@@ -6,7 +6,7 @@ no K sweep, and the distribution is wrong (see *Caveats*).
 
 ---
 
-## 1. Is the task saturated? (proposal §7)
+## 1. Is the task saturated?
 
 The risk table says: tune obstacle density until the single-head baseline lands
 well below ceiling, then freeze. Measured on 400 held-out EVAL seeds:
@@ -24,11 +24,11 @@ well below ceiling, then freeze. Measured on 400 held-out EVAL seeds:
 Better: the multi-head gain is concentrated exactly where the theory says it must
 be. K=1 → K=3 RWTA moves `pole` by **+0.28** and `bar` by **+0.15**, while the
 unimodal controls do not move at all (`window` 0.960 → 0.960, `wide_gap` 1.000 →
-1.000). That is the mode-averaging signature of proposal §1 — a single MSE head
+1.000). That is the mode-averaging signature — a single MSE head
 averaging over/under and left/right into the obstacle — appearing only on the
 strata that have two modes to average.
 
-## 2. Does disagreement actually detect ambiguity? (proposal §2)
+## 2. Does disagreement actually detect ambiguity?
 
 ROC AUC of cost-plausible head disagreement against the teacher's
 `n_modes ≥ 2`, on 54,037 validation states from 400 held-out seeds. Bootstrap
@@ -49,7 +49,7 @@ ties. That is the right answer and it also confirms the AUC implementation
 handles ties correctly rather than silently scoring 0 or 1.
 
 **The WTA vs RWTA gap is large** — 0.934 vs 0.651 on `bar`, non-overlapping CIs.
-That is proposal §3's second claimed contribution (an ablation the source paper
+That is the second claimed contribution in the README (an ablation the source paper
 does not perform), and on this evidence it is a real effect rather than a
 formality.
 
@@ -73,7 +73,7 @@ formality.
 
 ## What this changes about weeks 4–6
 
-- **Week 5's config can be frozen as it stands.** §7's density gate is satisfied
+- **Week 5's config can be frozen as it stands.** The density gate is satisfied
   without intervention.
 - **Week 4's gate should be reframed.** "Success rate improves" has little room
   left (0.963 → 0.995 ceiling). The question DAgger actually poses now is

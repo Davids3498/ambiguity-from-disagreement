@@ -112,6 +112,6 @@ def test_pitch_rotation_lifts_the_horizon():
 
 
 def test_angular_resolution_matches_plan_arithmetic():
-    """plan_week1.md §4.3 claims 1.54 deg/px vertical at 64x48, hfov 90."""
+    """The design arithmetic assumes 1.54 deg/px vertical at 64x48, hfov 90."""
     assert abs(vfov_deg(CFG) - 73.74) < 0.05
     assert abs(vfov_deg(CFG) / CFG.cam_h - 1.536) < 0.005

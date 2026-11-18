@@ -25,7 +25,7 @@ def main() -> None:
     args = ap.parse_args()
 
     if args.split == "test":
-        raise SystemExit("the test split is sealed until week 6 (plan §6)")
+        raise SystemExit("the test split is sealed until week 6")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     cfg = DEFAULT

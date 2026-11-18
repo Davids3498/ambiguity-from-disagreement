@@ -4,7 +4,7 @@ It must be the SAME code in both, or the week-5 ablation compares a policy
 difference and a controller difference at once.
 
 The plan is receding-horizon: only the first segment is ever executed, and the
-whole thing is replanned every step (proposal §4.1).
+whole thing is replanned every step.
 """
 from torch import Tensor
 

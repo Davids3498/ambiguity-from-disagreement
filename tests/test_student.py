@@ -11,7 +11,7 @@ FORBIDDEN = {"sim.scene", "sim.teacher", "sim.generate", "sim.env", "sim.cluster
 
 
 def test_student_module_imports_nothing_privileged():
-    """Proposal §4.3: 'Nothing privileged, ever.' Checkable by grep, not trust."""
+    """Nothing privileged, ever. Checkable by grep, not trust."""
     src = pathlib.Path("train/student.py").read_text()
     mods = set()
     for node in ast.walk(ast.parse(src)):

@@ -1,7 +1,7 @@
 """All magic numbers live here. Frozen: a Config is a value, not a mutable global.
 
 Week 1 defaults are a starting point, NOT frozen science. Obstacle density is
-tuned in week 5 against the single-head baseline (proposal §7) and frozen there,
+tuned in week 5 against the single-head baseline and frozen there,
 before any condition is run.
 """
 from dataclasses import dataclass
@@ -31,7 +31,7 @@ class Config:
     # --- scene layout ---
     focal_x: float = 15.0     # focal obstacle sits mid-corridor
     focal_band: float = 4.0   # no distractors within +/- this of focal_x
-    bar_thick: float = 0.60   # 3.7 px at 6 m -- see plan_week1.md §4.3
+    bar_thick: float = 0.60   # 3.7 px at 6 m (1.54 deg/px vertical)
     bar_gap_min: float = 1.20 # guaranteed clearance above AND below
     focal_offset: float = 0.50  # focal obstacle offset from the approach line
     pole_r: float = 0.35
@@ -45,13 +45,13 @@ class Config:
     distractor_size: float = 0.60
 
     # --- batching ---
-    prim_chunk: int = 8       # primitives per render chunk; see plan §4.1
+    prim_chunk: int = 8       # primitives per render chunk; see sim/depth.py
     # every env shares one slot layout, so the active mask IS the padding:
     # no max-primitive count is needed anywhere.
 
     # --- teacher (week 2) ---
     horizon: float = 5.0      # fixed forward horizon; varying it would make
-                              # candidate costs incomparable (plan2 §3.1)
+                              # candidate costs incomparable
     v_des: float = 4.5        # nominal planning speed
     n_lat: int = 15
     n_vert: int = 13
@@ -62,9 +62,9 @@ class Config:
     w_clear: float = 1.0
     w_goal: float = 1.0
     w_smooth: float = 0.3
-    margin_abs: float = 0.12  # hybrid survivor threshold (plan2 §3.4)
+    margin_abs: float = 0.12  # hybrid survivor threshold; see sim/teacher.py
     margin_rel: float = 0.15
-    tau: float = 0.65         # cluster threshold, metres RMS (plan2 §4); flat
+    tau: float = 0.65         # cluster threshold, metres RMS; flat
                               # plateau 0.5-0.8, merges modes above 1.0
     max_modes: int = 4
     cand_chunk: int = 16      # candidates per clearance chunk
@@ -73,19 +73,19 @@ class Config:
     k_heads: int = 3          # source paper's K; week 5 sweeps {1,2,3,4,6}
     w_cost: float = 0.05      # cost-head weight; waypoint term is /horizon^2
     relax: float = 0.10       # RWTA: winner 1-relax, losers relax/(K-1)
-    head_init_spread: float = 0.5   # metres; symmetry breaking (plan3 §3)
-    cost_margin: float = 0.15 # "cost-plausible" band for the §2 disagreement
+    head_init_spread: float = 0.5   # metres; symmetry breaking
+    cost_margin: float = 0.15 # "cost-plausible" band for head disagreement
     band_oversample: float = 1.0    # 1.0 = uniform. Geometry only, never n_modes
     lr: float = 3e-4
     batch_size: int = 256
 
     # --- control (shared by teacher and, in week 3, the student) ---
     kv: float = 8.0           # velocity P gain; 4.0 could not track a plan
-                              # through a 1.4 m aperture (plan2 week-2 outcome)
+                              # through a 1.4 m aperture (found in week 2)
 
     # --- geometry sanity (asserted in tests/test_generate.py) ---
     decision_range: float = 6.0    # where the planner must already see the mode
-    min_subtend_px: float = 3.0    # plan_week1.md §4.3
+    min_subtend_px: float = 3.0    # focal obstacle height at decision_range
 
     # --- goal / start ---
     start_x: float = 1.0

@@ -2,7 +2,7 @@
 
 No attitude, no rotor dynamics: the research question is about label
 multimodality and head behaviour, and physics fidelity does not move a single
-number in proposal §6.
+reported number.
 """
 import torch
 from torch import Tensor

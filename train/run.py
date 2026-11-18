@@ -1,6 +1,6 @@
 """python -m train.run --data data/round1.pt --loss rwta --steps 20000
 
-Diagnostics are logged from optimiser step ONE, not step 100 (proposal §6).
+Diagnostics are logged from optimiser step ONE, not step 100.
 """
 import argparse
 import csv
@@ -85,7 +85,7 @@ def train(cfg: Config, data: Rollouts, device, loss_name: str, steps: int,
     if dead_head:
         # Park the last head 8 m to the side, far outside any teacher label
         # (|y| <= 3.5). Under WTA it can never be nearest, so it never receives
-        # a gradient and never moves: a genuinely dead head. plan3 §8.
+        # a gradient and never moves: a genuinely dead head.
         with torch.no_grad():
             model.out.bias.view(k, 10)[-1, [1, 4, 7]] += 8.0
     opt = torch.optim.AdamW(model.parameters(), lr=cfg.lr, weight_decay=1e-4)

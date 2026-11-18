@@ -1,4 +1,4 @@
-"""Instrumented from training step one, not added afterwards (proposal §6).
+"""Instrumented from training step one, not added afterwards.
 
 Per-head win rate catches dead heads. Pairwise diversity catches duplicate
 heads. NEITHER IS SUFFICIENT ALONE: uniform win rates are compatible with three
@@ -37,7 +37,7 @@ def plausible_diversity(pred: Tensor, cost: Tensor, margin: float) -> Tensor:
     """Diversity over heads the model itself considers plausible -- predicted
     cost within `margin` of the best.
 
-    This is the week-5 disagreement signal (proposal §2), logged from week 3 so
+    This is the week-5 disagreement signal, logged from week 3 so
     it is not new, untested code at the moment it becomes the headline metric.
     A dead or garbage head must not be allowed to inflate it.
     """
@@ -62,7 +62,7 @@ def per_sample_disagreement(pred: Tensor, cost: Tensor, margin: float) -> Tensor
 
 
 def by_stratum(pred: Tensor, cost: Tensor, stratum: Tensor, margin: float) -> dict:
-    """Diversity resolved by obstacle type (proposal §6)."""
+    """Diversity resolved by obstacle type."""
     s = per_sample_disagreement(pred, cost, margin)
     return {name: float(s[stratum == k].mean()) if bool((stratum == k).any())
             else float("nan") for k, name in enumerate(STRATA)}

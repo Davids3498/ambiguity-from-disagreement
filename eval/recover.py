@@ -1,4 +1,4 @@
-"""Recovery from states the teacher never visits (proposal §9, week-4 gate).
+"""Recovery from states the teacher never visits (the week-4 gate).
 
 The teacher flies the approach line the obstacles were placed against, so an
 off-axis approach at speed is BY CONSTRUCTION outside its state distribution.

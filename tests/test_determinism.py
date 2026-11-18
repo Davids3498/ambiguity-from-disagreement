@@ -1,5 +1,5 @@
 """Determinism is not a nicety: DAgger in week 4 reshuffles batches, and every
-number in proposal §6 is reported on held-out seeds that must mean the same
+reported number is measured on held-out seeds that must mean the same
 thing on every run."""
 import subprocess
 import sys

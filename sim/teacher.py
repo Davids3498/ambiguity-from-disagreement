@@ -1,11 +1,11 @@
 """The privileged teacher: a labelling function, not a flyer.
 
-For any queried state it returns a LABEL SET of 1..M distinct good trajectories
-(proposal §4.2). Multimodality lives WITHIN a sample, not across samples, which
-is what makes the week-3 winner-takes-all assignment well-posed.
+For any queried state it returns a LABEL SET of 1..M distinct good
+trajectories. Multimodality lives WITHIN a sample, not across samples, which is
+what makes the week-3 winner-takes-all assignment well-posed.
 
 The component count this returns is simultaneously the training label and the
-ground truth for the headline detection metric of proposal §2. It is the most
+ground truth for the headline detection metric. It is the most
 consequential number in the project.
 """
 from dataclasses import dataclass
@@ -27,7 +27,7 @@ class Labels:
     traj: Tensor      # (N,M,3,3) body-frame waypoints, cost-ordered
     cost: Tensor      # (N,M)
     valid: Tensor     # (N,M) bool -- fewer than M modes leaves trailing False
-    n_modes: Tensor   # (N,) uncapped component count: the §2 ground truth
+    n_modes: Tensor   # (N,) uncapped component count: the detection ground truth
     feasible: Tensor  # (N,) whether any candidate cleared the obstacles at all
 
 
@@ -114,7 +114,7 @@ def plan(scene: Scene, pos: Tensor, vel: Tensor, yaw: Tensor, cfg: Config,
     soft = cfg.w_clear * c_clear + cfg.w_goal * c_goal + cfg.w_smooth * c_smooth
     cost = torch.where(feas, soft, torch.full_like(soft, INF))
 
-    # --- survivors: hybrid threshold (plan2 §3.4) -------------------------
+    # --- survivors: hybrid threshold ---------------------------------------
     # A pure multiplicative factor collapses a near-zero best cost -- a wide gap
     # would come back unimodal for an arithmetic reason, not a geometric one.
     best = cost.amin(1, keepdim=True)

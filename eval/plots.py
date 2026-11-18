@@ -1,7 +1,7 @@
-"""Deliverables §10: ROC, K sweep, diversity by obstacle type.
+"""README plots: ROC, K sweep, diversity by obstacle type.
 
 matplotlib is the one dependency this project takes that does not change a
-number in §6 -- it renders deliverables the proposal asks for by name.
+reported number -- it only renders the README figures.
 """
 import matplotlib
 matplotlib.use("Agg")
@@ -59,8 +59,8 @@ def plot_roc(curves: dict, path: str, title: str) -> None:
 
 
 def plot_k_sweep(rows: dict, path: str) -> None:
-    """K against detection AUC and success rate -- proposal §2's 'K becomes
-    measured, not asserted'."""
+    """K against detection AUC and success rate -- K is measured,
+    not asserted."""
     fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.2), dpi=160)
     for ax, key, lab, lo in ((axes[0], "auc", "detection AUC (band, bar+pole)", 0.45),
                              (axes[1], "success", "success rate", None)):
@@ -85,7 +85,7 @@ def plot_k_sweep(rows: dict, path: str) -> None:
 
 def plot_diversity(by_cond: dict, path: str) -> None:
     """Diversity resolved by obstacle type, against the null baseline. Without
-    the null bar this plot is unfalsifiable (proposal §6)."""
+    the null bar this plot is unfalsifiable."""
     names = list(by_cond)
     x = np.arange(len(STRATA))
     w = 0.8 / len(names)

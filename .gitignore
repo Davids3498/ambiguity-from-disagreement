@@ -24,7 +24,8 @@ runs/**/model.pt
 
 # ---- kept, deliberately ------------------------------------------------
 # results/  (5.3 MB): sweep.csv is required by tests/test_readme.py, the plots
-# are README deliverables, and disagreement.mp4 is deliverable §10.
+# are README deliverables, and disagreement.mp4 is the
+# video described in the README.
 
 # ---- scratch -----------------------------------------------------------
 /tmp/
