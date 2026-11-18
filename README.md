@@ -14,12 +14,15 @@ scored as a detection problem on held-out seeds.
 band, disagreement detects teacher multimodality at **AUC 0.935** (K=2, RWTA,
 3 training seeds) against a **null baseline of 0.525** — a model of identical
 architecture trained on the same data with every second mode removed.
+The pooled null sits below chance because of the `pole` stratum; per-stratum
+AUCs with the null beside them are in the [Ablation](#ablation) table and
+discussed under [Limitations](#limitations).
 
 ![ROC](results/plots/roc.png)
 
 ---
 
-## 3. Scope of the contribution (stated honestly, in the README)
+## Scope of the contribution
 
 **Reproduced, not invented:** privileged teacher-student training, depth as the interface, receding-horizon trajectory output, multi-hypothesis prediction with per-hypothesis cost, DAgger. This follows Loquercio et al., *Learning High-Speed Flight in the Wild* (Science Robotics, 2021), whose network already predicts three alternative trajectories with costs specifically to avoid mode averaging, and which already ablates unimodal vs. multimodal output.
 
@@ -32,9 +35,7 @@ architecture trained on the same data with every second mode removed.
 
 Claiming the multi-hypothesis architecture as a contribution would be caught by any reader who knows the paper. The contribution is the measurement layer.
 
-> The section above is reproduced verbatim from the project proposal, as it
-> required. What follows is what the measurements actually said, including
-> where they contradict the proposal.
+The results below include where the measurements contradicted the original plan.
 
 ---
 
@@ -229,5 +230,4 @@ Single RTX 3090. Simulator runs at 50,714 env-steps/s; the teacher labels at
 | `sim/` | simulator, teacher, clustering — no learned component |
 | `train/` | student, losses, diagnostics, DAgger, sweep |
 | `eval/` | harness, detection AUC, recovery, ablation, plots, video |
-| `plan_week*.md` | the plan for each week, with its outcome appended |
 | `derisk.md` | the mid-project check that set week 4's gate |

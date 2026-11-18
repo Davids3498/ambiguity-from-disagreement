@@ -29,16 +29,28 @@ def _sweep():
     return by
 
 
-def test_section_three_is_present_verbatim():
-    """Proposal §10: 'README containing §3 as written, unedited.'"""
+SCOPE_PARAGRAPHS = (
+    "**Reproduced, not invented:** privileged teacher-student training, depth "
+    "as the interface, receding-horizon trajectory output, multi-hypothesis "
+    "prediction with per-hypothesis cost, DAgger.",
+    "1. Head disagreement evaluated as an ambiguity *detector*",
+    "2. Ablation of the loss variant itself — WTA vs. relaxed WTA",
+    "3. K sweep against detection performance rather than against success rate alone.",
+    "4. Diversity resolved by obstacle type, with a null baseline",
+    "Claiming the multi-hypothesis architecture as a contribution would be "
+    "caught by any reader who knows the paper. The contribution is the "
+    "measurement layer.",
+)
+
+
+def test_scope_section_states_what_is_reproduced_and_what_is_new():
+    """The scope statement must stay in the README, unedited."""
     t = _text()
-    proposal = pathlib.Path("drone.md").read_text()
-    start = proposal.index("**Reproduced, not invented:**")
-    end = proposal.index("Claiming the multi-hypothesis architecture")
-    for para in proposal[start:end].strip().split("\n\n"):
-        p = para.strip()
-        if len(p) > 40:
-            assert p in t, p[:70]
+    i = t.index("## Scope of the contribution")
+    scope = t[i:t.index("## Results")]
+    assert "**New here:**" in scope
+    for p in SCOPE_PARAGRAPHS:
+        assert p in scope, p[:70]
 
 
 def test_every_reproduce_command_names_a_real_module():

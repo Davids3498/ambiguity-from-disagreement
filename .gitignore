@@ -18,9 +18,9 @@ data/
 runs/**/model.pt
 
 # NOT ignored, deliberately: runs/**/log.csv (160 KB total). The per-step win
-# rate and diversity traces are the evidence for the diagnostics claims in
-# plan_week3.md -- including the dead-head demonstration -- and cannot be read
-# off any other artefact.
+# rate and diversity traces are the evidence for the diagnostics claims in the
+# README "WTA collapses as K grows; RWTA does not" section -- including the
+# dead-head demonstration -- and cannot be read off any other artefact.
 
 # ---- kept, deliberately ------------------------------------------------
 # results/  (5.3 MB): sweep.csv is required by tests/test_readme.py, the plots
