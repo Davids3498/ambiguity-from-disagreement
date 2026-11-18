@@ -14,9 +14,10 @@ scored as a detection problem on held-out seeds.
 band, disagreement detects teacher multimodality at **AUC 0.935** (K=2, RWTA,
 3 training seeds) against a **null baseline of 0.525** — a model of identical
 architecture trained on the same data with every second mode removed.
-The pooled null sits below chance because of the `pole` stratum; per-stratum
-AUCs with the null beside them are in the [Ablation](#ablation) table and
-discussed under [Limitations](#limitations).
+The pooled null is pulled down to near chance by the `pole` stratum, where
+the null alone scores below chance (0.336); per-stratum AUCs with the null
+beside them are in the [Ablation](#ablation) table and discussed under
+[Limitations](#limitations).
 
 ![ROC](results/plots/roc.png)
 
